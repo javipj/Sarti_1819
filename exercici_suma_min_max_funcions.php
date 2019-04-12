@@ -6,7 +6,7 @@ function generaarray($longitud){
     for($i=0;$i<$longitud;$i++){
             $numeros[]=rand(0,100);
     }
-    return $numeros;
+    return   $numeros;
 }
 function _max($array){
 
