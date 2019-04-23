@@ -5,11 +5,11 @@
       $fecha2 = strtotime($fecha2);
 	
       if($fecha1 > $fecha2){
-         $comparacion = "La fecha1 es mayor a la fecha2.";
+         $comparacion = "La fecha1/A es mayor a la fecha2/B.";
       }elseif($fecha1 < $fecha2){
-         $comparacion = "La fecha1 es menor a la fecha2.";
+         $comparacion = "La fecha1/A es menor a la fecha2/B.";
       }else{
-         $comparacion = "La fecha1 es igual a la fecha2.";
+         $comparacion = "La fecha1/A es igual a la fecha2/B.";
       }
       //print ("<p>fecha1: $fecha1</p>\n");
       //print ("<p>fecha2: $fecha2</p>\n");
@@ -18,24 +18,34 @@
    }
 
    function transformarFecha($fecha,$regio){
-      $valores = explode('/', $fecha);
-      if(count($valores) == 3 
-         && checkdate($valores[1], $valores[0], $valores[2] )
-         && $regio=="EUR"){
-         // Formato europeo, pasar a eeuu
-         
-         $newDate = $valores[1].'/'.$valores[0].'/'.$valores[2];
+      if ($regio=="EUR"){
+         $valores = explode('-', $fecha);
+         if(count($valores) == 3){
+            if (checkdate($valores[1], $valores[0], 
+            $valores[2] )){ 
+            // Formato europeo, pasar a eeuu
 
-      }elseif(count($valores) == 3 
-               && checkdate($valores[0], $valores[1], $valores[2])
-               && $regio=="EEUU"){
+               $newDate = $valores[1].'/'.$valores[0].'/'.$valores[2];
+            }else{
+               $newDate = "Fecha incorrecta";
+            }
+         }else{
+            $newDate = "No es una fecha";
+         }
+      }elseif($regio=="EEUU"){
+         $valores = explode('/', $fecha);
+         if(count($valores) == 3){
+            if(checkdate($valores[0], $valores[1], $valores[2])){
          // Formato eeuu, pasar a europeo
          
-         $newDate = $valores[1].'/'.$valores[0].'/'.$valores[2];
-
-      }else{
-         $newDate = "Fecha incorrecta";
-      }
+               $newDate = $valores[1].'-'.$valores[0].'-'.$valores[2];
+            }else{
+               $newDate = "Fecha incorrecta";
+            }
+         }else{
+            $newDate = "No es una fecha";
+         }
+      }      
       return $newDate;
    }
 

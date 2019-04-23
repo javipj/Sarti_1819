@@ -11,6 +11,13 @@
 </head>
 <body>
     <?php
+    /* La funció només s'encarrega de validar si 
+    la data enviada es una data correcta en format
+    europeo. 
+    Per poder treballar directament amb aquesta data
+    amb el nostre idioma farem un setlocale()
+    Per formatar treballarem amb la funció strftime()
+    */
         $fecha_A = "19-03-2014"; // Amb - format europeo
         if (formatoEuropeo($fecha_A)){
             setlocale(LC_TIME, "es_ES");
