@@ -50,18 +50,22 @@
    }
 
    function formatoEuropeo($fecha){
+      $resultado=false;
       $valores = explode('-', $fecha);
-      if(count($valores) == 3 && checkdate($valores[1], $valores[0], $valores[2])){
-         return true;
-       }
-      return false;
+      if(count($valores) == 3 && 
+         checkdate($valores[1], $valores[0], 
+         $valores[2])){
+         $resultado=true;
+      }
+      return $resultado;
    }
 
    function validaPassword($valor){
+      $valida=false;
       $contraseña = "11a5b35f9b1bb15fd3b431d7489ffbc8";
       if(md5(sha1($valor))==$contraseña){
-         return true;
+         $valida=true;
        }
-      return false;
+      return $valida;
    }
 ?>
