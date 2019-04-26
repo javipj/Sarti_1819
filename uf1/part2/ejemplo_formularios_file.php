@@ -1,6 +1,6 @@
 <?php
 
-if(isset($_REQUEST["submit"])){
+if(isset($_REQUEST["submit"])){ 
 
     print_r($_FILES);
     echo "<br>^<br>";
