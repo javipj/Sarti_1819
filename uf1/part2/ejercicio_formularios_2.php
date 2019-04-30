@@ -8,8 +8,6 @@ calculadora que haga la suma de dos valores
 - 1 botón de envío de datos
 
 */
-
-
 if(isset($_REQUEST["submit"])){
 
     echo suma($_REQUEST["v1"],$_REQUEST["v2"]);
